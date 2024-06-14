@@ -59,6 +59,14 @@ function filtrarPorValor($productos, $precio) {
     return $resultado;
 }
 
+function listarModelos($productos){
+    $resultado = '';
+    foreach($productos as $producto){
+        $resultado .= $producto['modelo'] . "<br>";
+    }
+    return $resultado;
+}
+
 $productos = agregarProducto($productos, "Lavarropas", 66, 14500, "James");
 print_r($productos);
 echo "<br>";
@@ -87,6 +95,9 @@ $resultado = filtrarPorValor($productos, 14000);
 echo $resultado;
 
 $resultado = filtrarPorValor($productos, 12000);
+echo $resultado;
+
+$resultado = listarModelos($productos);
 echo $resultado;
 
 ?>
