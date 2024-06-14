@@ -13,7 +13,7 @@ function agregarProducto ($productos, $nombre, $cantidad, $precio, $modelo) {
     return $productos;
 }
 
-function buscarPorModelo($productos, $modelo){
+function buscarPorModelo($productos, $modelo) {
     foreach($productos as $producto){
         if($producto['modelo'] == $modelo){
             return "Nombre: " . $producto['nombre'] . " Cantidad: " . $producto['cantidad'] . " Precio: " . $producto['precio'] . "<br>";
@@ -30,7 +30,7 @@ function mostrarProductos($productos) {
     return $resultado;
 }
 
-function actualizarProducto($productos, $nombre, $cantidad, $precio, $modelo){
+function actualizarProducto($productos, $nombre, $cantidad, $precio, $modelo) {
     foreach($productos as &$producto){
         if($producto['modelo'] == $modelo){
             $producto['nombre'] = $nombre;
@@ -42,12 +42,21 @@ function actualizarProducto($productos, $nombre, $cantidad, $precio, $modelo){
     return $productos;
 }
 
-function calcularValorTotal($productos){
+function calcularValorTotal($productos) {
     $total = 0;
     foreach($productos as $producto){
         $total = $total + $producto['precio'];
     }
     return $total;
+}
+
+function filtrarPorValor($productos, $precio) {
+    $resultado = '';
+    foreach($productos as $producto) {
+        if($producto['precio'] > $precio)
+        $resultado .= "Nombre: " . $producto['nombre'] . " Cantidad: " . $producto['cantidad'] . " Precio: " . $producto['precio'] . "<br>";
+    }
+    return $resultado;
 }
 
 $productos = agregarProducto($productos, "Lavarropas", 66, 14500, "James");
@@ -71,6 +80,13 @@ $resultado = buscarPorModelo($productos, "James");
 echo "Actualizado: ".$resultado;
 
 $resultado = calcularValorTotal($productos);
+echo $resultado;
+echo "<br>";
+
+$resultado = filtrarPorValor($productos, 14000);
+echo $resultado;
+
+$resultado = filtrarPorValor($productos, 12000);
 echo $resultado;
 
 ?>
