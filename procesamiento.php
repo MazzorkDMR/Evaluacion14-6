@@ -76,4 +76,10 @@ function calcularPromedio($productos) {
     return $promedio;
 }
 
+if(!isset($_SESSION['productos'])){
+    $_SESSION['productos'] = [];
+}
+$productos = $_SESSION['productos'];
+$resultado = '';
+
 ?>
