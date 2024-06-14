@@ -30,6 +30,19 @@ function mostrarProductos($productos) {
     return $resultado;
 }
 
+function actualizarProducto($productos, $nombre, $cantidad, $precio, $modelo){
+    foreach($productos as &$producto){
+        if($producto['modelo'] == $modelo){
+            $producto['nombre'] = $nombre;
+            $producto['cantidad'] = $cantidad;
+            $producto['precio'] = $precio;
+            break;
+        }
+    }
+    return $productos;
+}
+
+
 $productos = agregarProducto($productos, "Lavarropas", 66, 14500, "James");
 print_r($productos);
 echo "<br>";
@@ -46,5 +59,8 @@ echo "<br>";
 $resultado = mostrarProductos($productos);
 echo $resultado;
 
+$productos = actualizarProducto($productos, "Lavarropa", 43, 16500, 'James');
+$resultado = buscarPorModelo($productos, "James");
+echo "Actualizado: ".$resultado;
 
 ?>
