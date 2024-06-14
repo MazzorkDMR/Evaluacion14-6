@@ -30,34 +30,34 @@ if(isset($_SESSION['resultado'])) {
         <input type="text" id="modelo" name="modelo"><br>
         
         <input type="radio" id="agregar" name="accion" value="agregar">
-        <label for="agregar">Agregar</label>
+        <label for="agregar">Agregar</label><br>
         
         <input type="radio" id="buscar" name="accion" value="buscar">
-        <label for="buscar">Buscar</label>
+        <label for="buscar">Buscar</label><br>
 
         <input type="radio" id="mostrar" name="accion" value="mostrar">
-        <label for="mostrar">Mostrar</label>
+        <label for="mostrar">Mostrar</label><br>
 
         <input type="radio" id="actualizar" name="accion" value="actualizar">
-        <label for="actualizar">Actualizar</label>
+        <label for="actualizar">Actualizar</label><br>
 
         <input type="radio" id="total" name="accion" value="total">
-        <label for="total">Total</label>
+        <label for="total">Calcular valor total</label><br>
 
         <input type="radio" id="filtrar" name="accion" value="filtrar">
-        <label for="filtrar">Filtrar</label>
+        <label for="filtrar">Filtrar por valor</label><br>
 
         <input type="radio" id="listar" name="accion" value="listar">
-        <label for="listar">Listar</label>
+        <label for="listar">Listar modelos</label><br>
 
         <input type="radio" id="promedio" name="accion" value="promedio">
-        <label for="promedio">Promedio</label>
+        <label for="promedio">Promedio</label><br>
 
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Enviar"><br>
     </form>
     <form action="procesamiento.php" method="POST">
         <input type="hidden" name="accion" value="limpiar">
-        <input type="submit" value="Limpiar Resultados">
+        <input type="submit" value="Limpiar Resultados"><br>
     </form>
 
     <div id="resultados">

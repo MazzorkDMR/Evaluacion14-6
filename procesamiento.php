@@ -82,4 +82,54 @@ if(!isset($_SESSION['productos'])){
 $productos = $_SESSION['productos'];
 $resultado = '';
 
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $accion = $_POST['accion'];
+    $nombre = $_POST['nombre'] ?? '';
+    $cantidad = $_POST['cantidad'] ?? '';
+    $precio = $_POST['precio'] ?? '';
+    $modelo = $_POST['modelo'] ?? '';
+
+    switch($accion) {
+        case 'agregar':
+            $productos = agregarProducto($productos, $nombre, $cantidad, $precio, $modelo);
+            $resultado = "Producto agregado correctamente.<br>";
+            break;
+        case 'buscar':
+            $resultado = buscarPorModelo($productos, $modelo);
+            break;
+        case 'mostrar':
+            $resultado = mostrarProductos($productos);
+            break;
+        case 'actualizar':
+            $productos = actualizarProducto($productos, $nombre, $cantidad, $precio, $modelo);
+            $resultado = "Producto actualizado correctamente.<br>";
+            break;
+        case 'total':
+            $resultado = calcularValorTotal($productos);
+            break;
+        case 'filtrar':
+            $resultado = filtrarPorValor($productos, $precio);
+            break;
+        case 'listar':
+            $resultado = listarModelos($productos);
+            break;
+        case 'promedio':
+            $resultado = calcularPromedio($productos);
+            break;
+        case 'limpiar':
+            $_SESSION['productos'] = [];
+            $resultado = "Resultados limpiados.<br>";
+            session_destroy();
+            break;
+        default:
+            $resultado = "Acción no válida";
+    }
+
+    $_SESSION['productos'] = $productos;
+    $_SESSION['resultado'] = $resultado;
+
+    header("Location: formulario.php");
+    exit();
+}
+
 ?>
