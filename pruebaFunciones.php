@@ -42,6 +42,13 @@ function actualizarProducto($productos, $nombre, $cantidad, $precio, $modelo){
     return $productos;
 }
 
+function calcularValorTotal($productos){
+    $total = 0;
+    foreach($productos as $producto){
+        $total = $total + $producto['precio'];
+    }
+    return $total;
+}
 
 $productos = agregarProducto($productos, "Lavarropas", 66, 14500, "James");
 print_r($productos);
@@ -62,5 +69,8 @@ echo $resultado;
 $productos = actualizarProducto($productos, "Lavarropa", 43, 16500, 'James');
 $resultado = buscarPorModelo($productos, "James");
 echo "Actualizado: ".$resultado;
+
+$resultado = calcularValorTotal($productos);
+echo $resultado;
 
 ?>
