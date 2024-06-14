@@ -22,6 +22,14 @@ function buscarPorModelo($productos, $modelo){
     return "Modelo no encontrado";
 }
 
+function mostrarProductos($productos) {
+    $resultado = '';
+    foreach($productos as $producto) {
+        $resultado .= "Nombre: " . $producto['nombre'] . " Cantidad: " . $producto['cantidad'] . " Precio: " . $producto['precio'] . "<br>";
+    }
+    return $resultado;
+}
+
 $productos = agregarProducto($productos, "Lavarropas", 66, 14500, "James");
 print_r($productos);
 echo "<br>";
@@ -34,6 +42,9 @@ echo $resultado;
 $resultado = buscarPorModelo($productos, "Logitech");
 echo $resultado;
 echo "<br>";
+
+$resultado = mostrarProductos($productos);
+echo $resultado;
 
 
 ?>
