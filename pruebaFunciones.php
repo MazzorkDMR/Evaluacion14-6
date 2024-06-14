@@ -67,6 +67,15 @@ function listarModelos($productos){
     return $resultado;
 }
 
+function calcularPromedio($productos) {
+    $total = 0;
+    foreach($productos as $producto){
+        $total = $total + $producto['precio'];
+    }
+    $promedio = (float)$total / count($productos);
+    return $promedio;
+}
+
 $productos = agregarProducto($productos, "Lavarropas", 66, 14500, "James");
 print_r($productos);
 echo "<br>";
@@ -99,5 +108,9 @@ echo $resultado;
 
 $resultado = listarModelos($productos);
 echo $resultado;
+
+$resultado = calcularPromedio($productos);
+echo $resultado;
+
 
 ?>
